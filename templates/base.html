@@ -1,0 +1,57 @@
+
+
+
+<!DOCTYPE html>
+
+
+
+
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    
+</head>
+
+<body>
+
+	<header>
+        
+        <div id = "rightHead" class = "divs">
+            {% block logged %}{% endblock %}
+        </div>
+    </header>
+
+	<div id = "leftBody" class = "divs">
+    {% with flashes = get_flashed_messages() %}
+                {% if flashes %}
+                    <ul class="flashes">
+                    {% for message in flashes %}
+                    {{ message }}
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        {% block left %}
+            
+        
+        {% endblock %}
+	</div>
+    
+    
+
+	<div id = "rightBody" class = "divs">
+        {% block right %}
+        
+        {% endblock %}
+		
+
+	</div>
+
+</body>
+
+
+
+
+
+</html>

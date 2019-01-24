@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block logged %}
+<a href="{{ url_for('unlogger') }}">Logout</a>
+{% endblock %}
+{% block left %}
+{% endblock %}
+{% block right %}
+    {% if username %}
+        <p>Scheduled Appointments</p>
+        {% if username.appointments.all() %}
+                {% for a in username.appointments.all() %}
+                        <a href="{{ url_for('ownerPatron', username=a.patron_username) }}">{{ a.patron_username }}</a><br/>
+                        Date: {{ a.date }}<br/>
+                        Time: {{ a.time }}<br/>
+                {% endfor %}
+        {% else %}
+                <p>no appointments scheduled</p>
+        {% endif %}
+        <p>Open appointments</p>
+        {% if username.open_appointments.all() %}
+            {% for b in username.open_appointments.all() %}
+                  Date: {{ b.date }}<br/>
+                  Time: {{ b.time }}<br/>
+            {% endfor %}
+        {% else %}
+                <p>no open appointments available</p>
+        {% endif %}
+    {% endif %}
+    
+{% endblock %}

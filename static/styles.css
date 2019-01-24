@@ -1,0 +1,49 @@
+header{
+	
+	text-align: center;
+	height: 80px;
+	font-size: 100%;
+	
+}
+
+body{
+    background-color: #E0FFFF;
+}
+
+#leftHead{
+    text-align: center;
+	float: left;
+	width: 30%;
+}
+
+#rightHead{
+    text-align: center;
+	float: right;
+	width: 70%;
+}
+
+#leftBody{
+	text-align: center;
+	float: left;
+	width: 30%;
+	
+    
+}
+
+
+#rightBody{
+	
+	text-align: center;
+	float: right;
+	width: 70%;
+    font-size: 120%;
+    font-weight: bold;
+	
+}
+
+.divs{
+    font-size: 100%;
+    color: #000080;
+    font-weight: bold;
+}
+

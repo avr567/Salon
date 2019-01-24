@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block logged %}
+<a href="{{ url_for('unlogger') }}">Logout</a>
+{% endblock %}
+{% block left %}
+<a href="{{ url_for('pat') }}">your profile</a>
+{% endblock %}
+{% block right %}
+    {% if username %}
+         <p>Open appointments</p>
+         <p>Select appointment to schedule</p>
+        {% if username.open_appointments.all() %}
+            {% for b in username.open_appointments.all() %}
+                  Date: {{ b.date }}<br/>
+                  Time: <a href="{{ url_for('appoint', username=b.stylist_username, date = b.date, time=b.time) }}">{{ b.time }}</a><br/>
+            {% endfor %}
+        {% else %}
+                <p>no open appointments available</p>
+        {% endif %}
+            
+    {% else %}
+        <p>Available stylists</p>
+        {% if stylists %}
+            {% for s in stylists %}
+                <a href="{{ url_for('patronStyle', username=s.username) }}">{{ s.username }}</a><br/>
+           
+            {% endfor %}
+        {% endif %}
+    
+    {% endif %}
+{% endblock %}
